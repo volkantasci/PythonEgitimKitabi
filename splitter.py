@@ -171,6 +171,7 @@ def main():
         argv[2] = int(argv[2])
     except ValueError:
         print(Splitter.help_page())
+        exit()
         
     if Splitter.check_arguments(argv):
         if Splitter.check_file(argv):

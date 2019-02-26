@@ -21,10 +21,9 @@ class Glue:
     def check_files(files):
         for i in files:
             if exists(i):
-                if not isfile(i):
-                    return False
+                return isfile(i)
             else:
-                print("Bazı dosyalar bulunamıyor!")
+                return False
 
         return True
 

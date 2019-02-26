@@ -146,7 +146,7 @@ class Splitter:
     @staticmethod
     def split_by_char(file,char_count):
         with open(file) as f:
-            chars = tuple([i for i in f.read()])
+            chars = tuple(f.read())
 
         if len(chars) % char_count == 0:
             files = Splitter.create_files(int(len(chars)/char_count))

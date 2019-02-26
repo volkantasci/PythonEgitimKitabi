@@ -9,29 +9,22 @@ class Splitter:
     @staticmethod
     def check_arguments(args):
         if len(args) != 4:
-            print(Splitter.help_page())
-            exit()
-
-        allowed_args = '-l', '-w', '-c'
-        option = args[1]  # Bu indekste --help yazabilir. Bu durumda yardım sayfası görüntülenmeli.
-        value = args[2]
-
-        if option == '--help':
             return False
 
-        elif option not in allowed_args:
-            print('hata2')
+        allowed_args = '-l', '-w', '-c'
+        option = args[1]
+        value = args[2]
+
+        if option not in allowed_args:
             return False
 
         elif type(value) is int:
             if value > 0:
                 return True
             else:
-                print("hata 3")
                 return False
 
         else:
-            print("hata 4")
             return False
 
 
@@ -49,6 +42,18 @@ class Splitter:
         else:
             return False
 
+
+    @staticmethod
+    def create_files(piece):
+        l = []
+
+        for i in 'abcdefghijklmnopqrstuvwxyz':
+            for j in 'abcdefghijklmnopqrstuvwxyz':
+                l.append(f"x{i}{j}")
+                if len(l) == piece:
+                    return l
+    
+    
     @staticmethod
     def help_page():
         msg = """
@@ -73,15 +78,6 @@ class Splitter:
         return msg
 
 
-    @staticmethod
-    def create_files(piece):
-        l = []
-
-        for i in 'abcdefghijklmnopqrstuvwxyz':
-            for j in 'abcdefghijklmnopqrstuvwxyz':
-                l.append(f"x{i}{j}")
-                if len(l) == piece:
-                    return l
 
     @staticmethod
     def split_by_line(file, line_count):
